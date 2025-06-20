@@ -1,0 +1,161 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 5%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background: linear-gradient(to top, rgba(0, 36, 0, 0.8), rgba(15, 150, 2, 0.7)), url(../../assets/webp/BTR-Logo.webp) center/contain no-repeat;
+    animation: animate 20s linear infinite;
+}
+
+.hero-content {
+    max-width: 800px;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 5px;
+    margin-bottom: 1.5rem;
+    color: var(--light-color);
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero h1 span {
+    font-family: 'Rubik Burned', sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* 3D Button Styles */
+.btn-3d-container {
+    position: relative;
+    perspective: 800px;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.btn-3d {
+    position: relative;
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform: translateZ(-30px);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 50px;
+    transform: translateZ(-30px);
+    transition: all 0.3s ease;
+}
+
+.btn-3d:hover {
+    transform: translateZ(-15px) rotateX(15deg);
+}
+
+.btn-3d:active {
+    transform: translateZ(0px);
+}
+
+.custom-shape-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 77px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider .shape-fill {
+  fill: var(--light-color);
+}
+
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+
+    .hero h1 span {
+        font-size: 3rem;
+    }
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1.5rem;
+    }
+    
+    .btn-secondary {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.25rem;
+    }
+
+    .hero-content h1 span {
+        display: block;
+        font-size: 1.5rem;
+        letter-spacing: 10px;
+    }
+}

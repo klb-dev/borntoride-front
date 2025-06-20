@@ -1,0 +1,92 @@
+.events {
+    background-color: var(--secondary-color);
+}
+
+.event-card {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.event-date {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 1rem;
+}
+
+.event-date .day {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.event-date .month {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+.event-content {
+    align-self: center;
+    padding: 1rem;
+}
+
+.event-content img {
+    width: 30rem;
+    height: 100%;
+    object-fit: contain;
+}
+
+.event-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: var(--primary-dark);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.event-details svg {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .event-card {
+        width: 70%;
+    }
+
+    .event-date .day {
+        font-size: 3rem;
+    }
+
+    .event-date .month {
+        font-size: 1.5rem;
+    }
+
+    .event-content img {
+        width: 100%;
+    }
+
+    .event-details {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .event-card {
+        width: 90%;
+    }
+}
