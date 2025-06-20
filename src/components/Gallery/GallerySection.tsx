@@ -1,36 +1,39 @@
+import { useEffect, useState } from "react";
 import "./GallerySection.css";
 import ShapeDivider from "../ui/ShapeDivider";
-import Skatepark from "../../assets/webp/gallaryImages/skatepark.webp";
-import GroupOnNewStar from "../../assets/webp/gallaryImages/groupOnNewStar.webp";
-import GroupSittingAtPark from "../../assets/webp/gallaryImages/groupSittingAtPark.webp";
-import KidRiding from "../../assets/webp/gallaryImages/kidRiding.webp";
-import GroupOnStar from "../../assets/webp/gallaryImages/groupOnStar.webp";
-import Prizes from "../../assets/webp/gallaryImages/prizes.webp";
-import HavingFun from "../../assets/webp/gallaryImages/havingFun.webp";
-import ExpertSkater from "../../assets/webp/gallaryImages/expertSkater.webp";
-import KidsAfterEvent from "../../assets/webp/gallaryImages/kidsAfterEvent.webp";
-import YoungKids from "../../assets/webp/gallaryImages/youngKids.webp";
+import galleryData from "../../data/gallery.json";
 
 
-const images = [
-  { src: Skatepark, alt: "Pleasanton Skatepark" },
-  { src: GroupOnNewStar, alt: "Chilling after event" },
-  { src: GroupSittingAtPark, alt: "Fun out of town" },
-  { src: KidRiding, alt: "Enjoying night skating" },
-  { src: GroupOnStar, alt: "Chilling after event" },
-  { src: Prizes, alt: "Prizes for an event" },
-  { src: HavingFun, alt: "Enjoying Skatepark" },
-  { src: ExpertSkater, alt: "Zac and Bob" },
-  { src: KidsAfterEvent, alt: "Enjoy new boards" },
-  { src: YoungKids, alt: "Built boards" },
-];
+type GalleryItem = {
+  src: string;
+  alt: string;
+};
 
 const GallerySection = () => {
+  const [images, setImages] = useState<GalleryItem[]>([]);
+
+  const imageMap = import.meta.glob("@/assets/gallery/*.webp", {
+    eager: true,
+    import: "default"
+  }) as Record<string, string>;
+
+  useEffect(() => {
+  const resolvedImages = galleryData.map((item) => {
+    const match = Object.entries(imageMap).find(([path]) =>
+      path.includes(item.src)
+    );
+    return {
+      src: match ? match[1] : "",
+      alt: item.alt
+    };
+  });
+  setImages(resolvedImages);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
+
   return (
-    <section className="gallery" id="gallery">
-      <h2 className="section-title">
-        <span>Gallery</span>
-      </h2>
+    <section className="section gallery" id="gallery">
+      <h2 className="section-title">Gallery</h2>
       <div className="gallery-container">
         {images.map((img, i) => (
           <div className="gallery-item" key={i}>
